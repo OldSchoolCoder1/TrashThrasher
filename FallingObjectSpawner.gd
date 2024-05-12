@@ -21,4 +21,3 @@ func spawn_object():
 	new_object.position.y = -10  # Start above the screen.
 	var rotation_degrees = randf_range(0, 359)
 	new_object.rotation = rotation_degrees
- 
