@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm2k1fnqyl0lq"]
+[gd_scene load_steps=5 format=3 uid="uid://cm2k1fnqyl0lq"]
 
 [ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="2_fy71i"]
 [ext_resource type="PackedScene" uid="uid://caxubyp0jxh3n" path="res://FallingObjectSpawner.tscn" id="3_rqdod"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_my3n1"]
+radius = 1594.38
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_swx7r"]
 radius = 245.589
@@ -12,6 +15,12 @@ radius = 245.589
 
 [node name="WorldContainer2" type="Node2D" parent="."]
 position = Vector2(409, 1158)
+
+[node name="Area2D" type="Area2D" parent="WorldContainer2"]
+gravity_space_override = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldContainer2/Area2D"]
+shape = SubResource("CircleShape2D_my3n1")
 
 [node name="Planet" type="StaticBody2D" parent="WorldContainer2"]
 scale = Vector2(2.785, 2.785)
