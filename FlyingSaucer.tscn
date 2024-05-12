@@ -1,8 +1,17 @@
-[gd_scene format=3 uid="uid://kdva342omuy8"]
+[gd_scene load_steps=3 format=3 uid="uid://kdva342omuy8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_loqs0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smfwb"]
+size = Vector2(252, 50)
 
 [node name="FlyingSaucer" type="Node2D"]
-position = Vector2(602, 461)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(251.5, 50.5)
+texture = SubResource("PlaceholderTexture2D_loqs0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_smfwb")

@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm2k1fnqyl0lq"]
+[gd_scene load_steps=4 format=3 uid="uid://cm2k1fnqyl0lq"]
 
-[ext_resource type="PackedScene" uid="uid://c200mwutpwlne" path="res://Scenes/TestPlanet.tscn" id="1_442a0"]
+[ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="2_fy71i"]
 [ext_resource type="PackedScene" uid="uid://caxubyp0jxh3n" path="res://FallingObjectSpawner.tscn" id="3_rqdod"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swx7r"]
+radius = 245.589
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="TestPlanet" parent="." instance=ExtResource("1_442a0")]
-top_level = true
-position = Vector2(410, 582)
-
 [node name="Node2D" parent="." instance=ExtResource("3_rqdod")]
+
+[node name="WorldContainer2" type="Node2D" parent="."]
+position = Vector2(409, 1158)
+
+[node name="Planet" type="StaticBody2D" parent="WorldContainer2"]
+scale = Vector2(2.785, 2.785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldContainer2/Planet"]
+shape = SubResource("CircleShape2D_swx7r")
+
+[node name="Sprite2D" type="Sprite2D" parent="WorldContainer2/Planet"]
+texture = ExtResource("2_fy71i")
+offset = Vector2(-2.305, 0)
