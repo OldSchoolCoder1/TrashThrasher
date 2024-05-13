@@ -1,38 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm2k1fnqyl0lq"]
+[gd_scene load_steps=3 format=3 uid="uid://cm2k1fnqyl0lq"]
 
-[ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="2_fy71i"]
+[ext_resource type="PackedScene" uid="uid://c12o2g68qaex5" path="res://WorldContainer.tscn" id="1_sy70u"]
 [ext_resource type="PackedScene" uid="uid://caxubyp0jxh3n" path="res://FallingObjectSpawner.tscn" id="3_rqdod"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_my3n1"]
-radius = 1594.38
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_swx7r"]
-radius = 245.589
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Node2D" parent="." instance=ExtResource("3_rqdod")]
 
-[node name="WorldContainer2" type="Node2D" parent="."]
-position = Vector2(409, 1158)
-
-[node name="Area2D" type="Area2D" parent="WorldContainer2"]
-gravity_space_override = 3
-gravity_point = true
-gravity_point_unit_distance = 680.0
-gravity_point_center = Vector2(0, 0)
-gravity_direction = Vector2(0, 0)
-gravity = 250.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldContainer2/Area2D"]
-shape = SubResource("CircleShape2D_my3n1")
-
-[node name="Planet" type="StaticBody2D" parent="WorldContainer2"]
-scale = Vector2(2.785, 2.785)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldContainer2/Planet"]
-shape = SubResource("CircleShape2D_swx7r")
-
-[node name="Sprite2D" type="Sprite2D" parent="WorldContainer2/Planet"]
-texture = ExtResource("2_fy71i")
-offset = Vector2(-2.305, 0)
+[node name="WorldContainer" parent="." instance=ExtResource("1_sy70u")]
+position = Vector2(408, 1152)
