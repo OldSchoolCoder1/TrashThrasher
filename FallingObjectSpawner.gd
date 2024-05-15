@@ -1,24 +1,25 @@
 extends Node2D
 
-@export var SPAWN_INTERVAL = 1.5
-var time_since_last_spawn = 0
+@onready var blaster = get_node("../Blaster")  # Adjust the path to correctly reference the Blaster node
+@onready var projectile_scene = preload("res://Projectile.tscn") 
 
-var falling_object_scene = preload("res://Scenes/TrashObject.tscn")
+var OFFSET = 50 
 
-func _process(delta):
-	time_since_last_spawn += delta
+func _ready():
+	
+	pass
 
-	# Check if it's time to spawn a new object
-	if time_since_last_spawn >= SPAWN_INTERVAL:
-		spawn_object()
-		time_since_last_spawn = 0
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		shoot()
 
-func spawn_object():
-	# Instantiate a new falling object and add it to the scene
-	var new_object = falling_object_scene.instantiate()
-	add_child(new_object)
-	new_object.position.x = randf_range(0, get_viewport().get_visible_rect().size.x)  # Randomize x position
-	new_object.position.y = -10  # Start above the screen.
-	var rotation_degrees = randf_range(0, 359)
-	new_object.rotation = rotation_degrees
+func shoot():
+	if not projectile_scene:
+		print("Projectile scene not loaded")
+		return
 
+	var instance = projectile_scene.instance()
+	instance.dir = rotation  
+	instance.spawnPos = global_position + Vector2(cos(rotation), sin(rotation)) * OFFSET
+	instance.spawnRot = rotation
+	blaster.add_child(instance)
