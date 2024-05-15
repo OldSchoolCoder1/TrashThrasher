@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c12o2g68qaex5"]
+[gd_scene load_steps=5 format=3 uid="uid://lebb21fyy850"]
 
 [ext_resource type="Script" path="res://WorldContainer.gd" id="1_80xnk"]
 [ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="1_ng6nw"]
-[ext_resource type="PackedScene" uid="uid://mp4tfblhfnbf" path="res://Scenes/TrashObject.tscn" id="3_wsr18"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_my3n1"]
 radius = 1594.38
@@ -34,6 +33,3 @@ shape = SubResource("CircleShape2D_swx7r")
 [node name="Sprite2D" type="Sprite2D" parent="Planet"]
 texture = ExtResource("1_ng6nw")
 offset = Vector2(-2.305, 0)
-
-[node name="RigidBody2D" parent="." instance=ExtResource("3_wsr18")]
-position = Vector2(554.186, -534.919)
