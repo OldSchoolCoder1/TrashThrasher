@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://kdva342omuy8"]
+[gd_scene load_steps=2 format=3 uid="uid://kdva342omuy8"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_loqs0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_smfwb"]
-size = Vector2(252, 50)
+[ext_resource type="Script" path="res://FlyingSaucer.gd" id="1_ysgo2"]
 
 [node name="FlyingSaucer" type="Node2D"]
+position = Vector2(602, 461)
+script = ExtResource("1_ysgo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(251.5, 50.5)
