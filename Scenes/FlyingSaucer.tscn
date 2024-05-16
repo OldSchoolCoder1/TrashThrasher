@@ -7,10 +7,5 @@ position = Vector2(602, 461)
 script = ExtResource("1_ysgo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(251.5, 50.5)
-texture = SubResource("PlaceholderTexture2D_loqs0")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_smfwb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

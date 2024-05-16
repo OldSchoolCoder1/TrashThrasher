@@ -1,0 +1,16 @@
+
+[gd_scene load_steps=3 format=3 uid="uid://b0y24nlpmjp1g"]
+
+[ext_resource type="Script" path="res://spawner.gd" id="1_ifqt1"]
+[ext_resource type="Texture2D" uid="uid://cj11078siivl0" path="res://assets/player/laser-gun.png" id="2_jp4kl"]
+
+
+[node name="Blaster" type="Node2D"]
+
+[node name="spawner" type="Node2D" parent="."]
+script = ExtResource("1_ifqt1")
+
+[node name="Laser-gun" type="Sprite2D" parent="spawner"]
+position = Vector2(416, 374)
+rotation = -1.5708
+texture = ExtResource("2_jp4kl")
