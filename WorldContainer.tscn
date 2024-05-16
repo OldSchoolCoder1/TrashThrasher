@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://lebb21fyy850"]
+
+[ext_resource type="Script" path="res://WorldContainer.gd" id="1_80xnk"]
+[ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="1_ng6nw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_my3n1"]
+radius = 1594.38
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swx7r"]
+radius = 245.589
+
+[node name="WorldContainer" type="Node2D"]
+rotation = -0.778417
+script = ExtResource("1_80xnk")
+
+[node name="Area2D" type="Area2D" parent="."]
+gravity_space_override = 3
+gravity_point = true
+gravity_point_unit_distance = 680.0
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 250.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_my3n1")
+
+[node name="Planet" type="StaticBody2D" parent="."]
+scale = Vector2(2.785, 2.785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet"]
+shape = SubResource("CircleShape2D_swx7r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet"]
+texture = ExtResource("1_ng6nw")
+offset = Vector2(-2.305, 0)
