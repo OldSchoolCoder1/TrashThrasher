@@ -2,12 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://WorldContainer.tscn" id="1_sy70u"]
 [ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="3_hb0a0"]
-[ext_resource type="PackedScene" uid="uid://caxubyp0jxh3n" path="res://FallingObjectSpawner.tscn" id="3_rqdod"]
 [ext_resource type="Script" path="res://Scenes/Spawner.gd" id="4_4pbeg"]
+[ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="5_hy2lh"]
 
 [node name="TestLevel" type="Node2D"]
-
-[node name="Node2D" parent="." instance=ExtResource("3_rqdod")]
 
 [node name="WorldContainer" parent="." instance=ExtResource("1_sy70u")]
 position = Vector2(408, 1152)
@@ -15,3 +13,6 @@ position = Vector2(408, 1152)
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_hb0a0")]
 position = Vector2(411, 453)
 script = ExtResource("4_4pbeg")
+
+[node name="FlyingSaucer" parent="." instance=ExtResource("5_hy2lh")]
+position = Vector2(453, 97)

@@ -4,13 +4,16 @@ extends Node2D
 var health = 100
 var speed = 100
 var direction = Vector2()
-var sprite: Sprite2D
+var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
+var trash = load("res://Scenes/TrashObject.tscn")
+@export var trash_time := 1
+var timer = 0
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-	sprite = get_node("Sprite2D")
-	collision_shape = get_node("CollisionShape2D")
+	sprite = self.get_node("Sprite")
+	collision_shape = self.get_node("CollisionShape2D")
 	randomize()
 	direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 
@@ -23,12 +26,16 @@ func _process(delta):
 		direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 	check_bounds()
 	update_animation()
+	timer += delta
+	if timer >= trash_time:
+		timer = 0
+		spawn_trash()
 
 # Function to spawn trash
 func spawn_trash():
-	# var trash = Trash.instance()  # Replace 'Trash' with actual file
-#    trash.position = position
-#    get_parent().add_child(trash)
+	var new_trash = trash.instantiate()
+	new_trash.position = position
+	get_parent().add_child(new_trash)
 
  # Function to take damage func take_damage(amount):
 func take_damage(amount):
@@ -37,8 +44,6 @@ func take_damage(amount):
 		die()
 		play_sound()
 		update_animation()
-
-
 
 # Function to handle the saucer's destruction
 func die():
@@ -62,7 +67,6 @@ func check_bounds():
 
 # Update sprite animation based on the saucer's state
 func update_animation():
-
 	if health < 50:
 		sprite.play("damaged")
 	else:
@@ -70,5 +74,5 @@ func update_animation():
 
 # Collision handling function
 func _on_FlyingSaucer_body_entered(body):
-	if body.is_in_group("enemies"):
+	if body.name == "Projectile":
 		take_damage(10)
