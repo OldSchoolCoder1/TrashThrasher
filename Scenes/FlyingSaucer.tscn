@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://kdva342omuy8"]
+[gd_scene load_steps=4 format=3 uid="uid://kdva342omuy8"]
 
-[ext_resource type="Script" path="res://FlyingSaucer.gd" id="1_ysgo2"]
+[ext_resource type="Script" path="res://Scenes/FlyingSaucer.gd" id="1_ysgo2"]
+[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://assets/enemies/little-saucer1.png" id="2_7httv"]
 
-[node name="FlyingSaucer" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljrck"]
+radius = 122.016
+
+[node name="FlyingSaucer" type="CharacterBody2D"]
 position = Vector2(602, 461)
 script = ExtResource("1_ysgo2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Little-saucer1" type="Sprite2D" parent="."]
+position = Vector2(-207, -185)
+texture = ExtResource("2_7httv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-207, -226)
+scale = Vector2(0.955, 0.425)
+shape = SubResource("CircleShape2D_ljrck")

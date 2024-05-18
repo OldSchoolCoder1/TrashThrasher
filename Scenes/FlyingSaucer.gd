@@ -1,5 +1,6 @@
 extends Node2D
 
+var Trash = preload("res://Scenes/TrashObject.tscn")
 # Properties
 var health = 100
 var speed = 100
@@ -9,7 +10,7 @@ var collision_shape: CollisionShape2D
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-	sprite = get_node("Sprite2D")
+	sprite = get_node("Little-saucer1")
 	collision_shape = get_node("CollisionShape2D")
 	randomize()
 	direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
@@ -26,9 +27,9 @@ func _process(delta):
 
 # Function to spawn trash
 func spawn_trash():
-	# var trash = Trash.instance()  # Replace 'Trash' with actual file
-#    trash.position = position
-#    get_parent().add_child(trash)
+	var trash = Trash.instance()  # Replace 'Trash' with actual file
+	trash.position = position
+	get_parent().add_child(trash)
 
  # Function to take damage func take_damage(amount):
 func take_damage(amount):

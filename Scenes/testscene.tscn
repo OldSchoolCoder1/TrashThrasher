@@ -15,3 +15,7 @@ offset_left = -19.0
 offset_top = -11.0
 offset_right = 21.0
 offset_bottom = 29.0
+
+[node name="Timer" type="Timer" parent="Spawner"]
+process_mode = 1
+autostart = true
