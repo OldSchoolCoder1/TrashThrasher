@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuff0ykamx6ki"
-path="res://.godot/imported/garbage-bag1.png-5cca24258c5100577ee7db6fa22a4ae8.ctex"
+path="res://.godot/imported/garbage-bag1.png-a9de5f38ad79c5893d107dc8071b9d7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/garbage/garbage-bag1.png"
-dest_files=["res://.godot/imported/garbage-bag1.png-5cca24258c5100577ee7db6fa22a4ae8.ctex"]
+source_file="res://assets/garbage/garbage-bag1.png"
+dest_files=["res://.godot/imported/garbage-bag1.png-a9de5f38ad79c5893d107dc8071b9d7f.ctex"]
 
 [params]
 
