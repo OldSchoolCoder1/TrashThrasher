@@ -1,5 +1,6 @@
 extends Area2D
 
+var Trash = preload("res://Scenes/TrashObject.tscn")
 # Properties
 var health = 100
 var speed = 100
@@ -10,6 +11,7 @@ var collision_shape: CollisionShape2D
 
 func _ready():
 	sprite = get_node("Sprite2D")
+	sprite = get_node("Little-saucer1")
 	collision_shape = get_node("CollisionShape2D")
 	randomize()
 	direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
@@ -30,6 +32,9 @@ func spawn_trash():
 	# var trash = Trash.instance()  # Replace 'Trash' with actual file
 #    trash.position = position
 #    get_parent().add_child(trash)
+	var trash = Trash.instance()  # Replace 'Trash' with actual file
+	trash.position = position
+	get_parent().add_child(trash)
 
  # Function to take damage func take_damage(amount):
 func take_damage(amount):
@@ -63,6 +68,11 @@ func check_bounds():
 
 # Update sprite animation based on the saucer's state
 func update_animation():
+
+	if health < 50:
+		sprite.play("damaged")
+	else:
+		sprite.play("normal")
 	pass
 	#if health < 50:
 		#sprite.play("damaged")
