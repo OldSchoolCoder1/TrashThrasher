@@ -1,5 +1,6 @@
-extends Node2D
+extends Area2D
 
+var Trash = preload("res://Scenes/TrashObject.tscn")
 # Properties
 var health = 100
 var speed = 100
@@ -14,6 +15,7 @@ var timer = 0
 func _ready():
 	sprite = self.get_node("Sprite")
 	collision_shape = self.get_node("CollisionShape2D")
+
 	randomize()
 	direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 
@@ -71,6 +73,11 @@ func update_animation():
 		sprite.play("damaged")
 	else:
 		sprite.play("normal")
+	pass
+	#if health < 50:
+		#sprite.play("damaged")
+	#else:
+		#sprite.play("normal")
 
 # Collision handling function
 func _on_FlyingSaucer_body_entered(body):

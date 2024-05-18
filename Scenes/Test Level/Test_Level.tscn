@@ -16,3 +16,5 @@ script = ExtResource("4_4pbeg")
 
 [node name="FlyingSaucer" parent="." instance=ExtResource("5_hy2lh")]
 position = Vector2(453, 97)
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
