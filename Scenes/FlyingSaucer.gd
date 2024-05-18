@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 # Properties
 var health = 100
@@ -26,6 +26,7 @@ func _process(delta):
 
 # Function to spawn trash
 func spawn_trash():
+	pass
 	# var trash = Trash.instance()  # Replace 'Trash' with actual file
 #    trash.position = position
 #    get_parent().add_child(trash)
@@ -62,11 +63,11 @@ func check_bounds():
 
 # Update sprite animation based on the saucer's state
 func update_animation():
-
-	if health < 50:
-		sprite.play("damaged")
-	else:
-		sprite.play("normal")
+	pass
+	#if health < 50:
+		#sprite.play("damaged")
+	#else:
+		#sprite.play("normal")
 
 # Collision handling function
 func _on_FlyingSaucer_body_entered(body):
