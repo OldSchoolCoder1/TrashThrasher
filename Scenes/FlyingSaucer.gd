@@ -72,11 +72,6 @@ func update_animation():
 		sprite.play("damaged")
 	else:
 		sprite.play("normal")
-	pass
-	#if health < 50:
-		#sprite.play("damaged")
-	#else:
-		#sprite.play("normal")
 
 # Collision handling function
 func _on_FlyingSaucer_body_entered(body):

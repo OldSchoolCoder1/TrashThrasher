@@ -10,7 +10,7 @@ radius = 1594.38
 radius = 245.589
 
 [node name="WorldContainer" type="Node2D"]
-rotation = -0.778417
+rotation = 2.52375
 script = ExtResource("1_80xnk")
 
 [node name="Area2D" type="Area2D" parent="."]

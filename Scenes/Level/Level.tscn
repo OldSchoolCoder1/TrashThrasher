@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1sdyd703lsa"]
+[gd_scene load_steps=3 format=3 uid="uid://b1sdyd703lsa"]
 
 [ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
 [ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
-[ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="3_pwjdw"]
 
 [node name="Level" type="Node2D"]
 
@@ -12,11 +11,9 @@ position = Vector2(392, 1157)
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_y47ha")]
 position = Vector2(366, 457)
 wall_min_slide_angle = 3.14159
+SPEED = 100
 world = NodePath("../WorldContainer")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-offset = Vector2(0, -135.49)
+position = Vector2(16.38, -131.735)
 ignore_rotation = false
-
-[node name="FlyingSaucer" parent="." instance=ExtResource("3_pwjdw")]
-position = Vector2(368, 199)
