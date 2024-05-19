@@ -10,9 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dnal67p2ao8hk" path="res://Assets/player/Dude_Monster_Walk_6.png" id="7_ir082"]
 [ext_resource type="Texture2D" uid="uid://jqkmdclwse30" path="res://Assets/player/Dude_Monster_Walk+Attack_6.png" id="8_x88kg"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtsqu"]
-radius = 11.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d27do"]
+size = Vector2(20, 19.3595)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j26cv"]
 atlas = ExtResource("1_wo546")
@@ -384,15 +383,17 @@ slide_on_ceiling = false
 floor_constant_speed = true
 floor_block_on_wall = false
 floor_max_angle = 0.0
-floor_snap_length = 18.7
+floor_snap_length = 200.0
 script = ExtResource("1_mg4bf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_mtsqu")
+position = Vector2(0, 1.41062)
+scale = Vector2(0.808443, 1.28212)
+shape = SubResource("RectangleShape2D_d27do")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_ocymk")
-animation = &"walk-attack"
-frame_progress = 0.318704
+animation = &"death"
+
+[node name="Timer" type="Timer" parent="."]

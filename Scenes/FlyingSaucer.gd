@@ -7,7 +7,7 @@ var speed = 100
 var direction = Vector2()
 @export var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
-var trash = load("res://Scenes/TrashObject.tscn")
+@export var trash : PackedScene
 @export var trash_time := 1
 var timer = 0
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
