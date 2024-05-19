@@ -9,4 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.y=position.y-speed*delta
-
+	#Check out of bounds, delete if so
+	if position.y < -20:
+		queue_free()

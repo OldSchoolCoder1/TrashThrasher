@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lebb21fyy850"]
 
-[ext_resource type="Script" path="res://WorldContainer.gd" id="1_80xnk"]
+[ext_resource type="Script" path="res://Scenes/WorldContainer.gd" id="1_80xnk"]
 [ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="1_ng6nw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_my3n1"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1sdyd703lsa"]
+
+[ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
+[ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
+
+[node name="Level" type="Node2D"]
+
+[node name="WorldContainer" parent="." instance=ExtResource("1_850cu")]
+position = Vector2(392, 1157)
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_y47ha")]
+position = Vector2(366, 457)
+wall_min_slide_angle = 3.14159
+floor_block_on_wall = false
+floor_max_angle = 0.0
+floor_snap_length = 10.0
+world = NodePath("../WorldContainer")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]

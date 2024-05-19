@@ -1,5 +1,6 @@
-[gd_scene load_steps=57 format=3 uid="uid://x1rf8n2n0cvg"]
+[gd_scene load_steps=58 format=3 uid="uid://x1rf8n2n0cvg"]
 
+[ext_resource type="Script" path="res://Player_script.gd" id="1_mg4bf"]
 [ext_resource type="Texture2D" uid="uid://cwmdn8qu7eyt0" path="res://Assets/player/Dude_Monster_Attack1_4.png" id="1_wo546"]
 [ext_resource type="Texture2D" uid="uid://86nmexaylj1b" path="res://Assets/player/Dude_Monster_Death_8.png" id="2_2cjrb"]
 [ext_resource type="Texture2D" uid="uid://cm2jwmgmqv8cn" path="res://Assets/player/Dude_Monster_Hurt_4.png" id="3_ouvxk"]
@@ -379,6 +380,8 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_mg4bf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

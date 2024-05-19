@@ -9,5 +9,4 @@ speed = 350
 
 [node name="Laser-blast1" type="Sprite2D" parent="."]
 rotation = -1.5708
-scale = Vector2(0.16, 0.16)
 texture = ExtResource("1_jcp8d")
