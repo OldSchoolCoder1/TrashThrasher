@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs3ffralg7246"
-path="res://.godot/imported/cardboard-box2.png-19184cccc6921a92c8bf7a141d50c46c.ctex"
+path="res://.godot/imported/cardboard-box2.png-7776e53fa7419e651a6c09be958663ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/garbage/cardboard-box2.png"
-dest_files=["res://.godot/imported/cardboard-box2.png-19184cccc6921a92c8bf7a141d50c46c.ctex"]
+source_file="res://Assets/garbage/cardboard-box2.png"
+dest_files=["res://.godot/imported/cardboard-box2.png-7776e53fa7419e651a6c09be958663ee.ctex"]
 
 [params]
 

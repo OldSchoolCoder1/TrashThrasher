@@ -10,10 +10,11 @@ radius = 1594.38
 radius = 245.589
 
 [node name="WorldContainer" type="Node2D"]
-rotation = 2.52375
+rotation = -6.28319
 script = ExtResource("1_80xnk")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-2.925, 1.47)
 gravity_space_override = 3
 gravity_point = true
 gravity_point_unit_distance = 680.0
@@ -22,12 +23,16 @@ gravity_direction = Vector2(0, 0)
 gravity = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_my3n1")
 
 [node name="Planet" type="StaticBody2D" parent="."]
+position = Vector2(-2.925, 1.47)
 scale = Vector2(2.785, 2.785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planet"]
+position = Vector2(1, -1)
+scale = Vector2(0.995, 0.995)
 shape = SubResource("CircleShape2D_swx7r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Planet"]

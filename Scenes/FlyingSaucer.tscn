@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://kdva342omuy8"]
+[gd_scene load_steps=6 format=3 uid="uid://kdva342omuy8"]
 
-[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://assets/enemies/little-saucer1.png" id="1_a3d1g"]
+[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://Assets/enemies/little-saucer1.png" id="1_a3d1g"]
 [ext_resource type="Script" path="res://Scenes/FlyingSaucer.gd" id="1_xdmlk"]
+[ext_resource type="PackedScene" uid="uid://566th2q4vdh2" path="res://Scenes/objects/GarbageBag2.tscn" id="2_txrvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljrck"]
 radius = 41.4934
@@ -28,6 +29,7 @@ animations = [{
 [node name="FlyingSaucer" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_xdmlk")
 sprite = NodePath("AnimatedSprite2D")
+trash = ExtResource("2_txrvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12.4)
