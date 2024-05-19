@@ -2,7 +2,7 @@ extends Area2D
 
 var Trash = preload("res://Scenes/TrashObject.tscn")
 # Properties
-var health = 100
+var health = 3
 var speed = 100
 var direction = Vector2()
 @export var sprite: AnimatedSprite2D
@@ -13,8 +13,9 @@ var timer = 0
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-	collision_shape = self.get_node("CollisionShape2D")
 
+	add_to_group("Saucers")
+	collision_shape = self.get_node("CollisionShape2D")
 	randomize()
 	direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 
@@ -34,8 +35,10 @@ func _process(delta):
 
 # Function to spawn trash
 func spawn_trash():
+
 	var new_trash = trash.instantiate()
 	new_trash.position = position
+	new_trash.add_to_group("Trash")
 	get_parent().add_child(new_trash)
 
  # Function to take damage func take_damage(amount):
@@ -74,6 +77,13 @@ func update_animation():
 		sprite.play("normal")
 
 # Collision handling function
+<<<<<<< Updated upstream
 func _on_FlyingSaucer_body_entered(body):
 	if body.name == "Projectile":
 		take_damage(10)
+=======
+func hit():
+	health -= 1
+	if health <= 0:
+		queue_free()
+>>>>>>> Stashed changes

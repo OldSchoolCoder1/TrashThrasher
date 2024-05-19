@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7deowc4ed8gj" path="res://Scenes/projectile.tscn" id="3_qch0j"]
 [ext_resource type="Texture2D" uid="uid://cpxihichvmfvc" path="res://Assets/background/Space_Background4.png" id="4_urcqb"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["Saucers"]]
 
 [node name="WorldContainer" parent="." instance=ExtResource("1_850cu")]
 position = Vector2(392, 1157)
@@ -21,8 +21,9 @@ world = NodePath("../WorldContainer")
 position = Vector2(16.38, -131.735)
 ignore_rotation = false
 
-[node name="FlyingSaucer" parent="." instance=ExtResource("3_pwjdw")]
+[node name="FlyingSaucer" parent="." groups=["Saucers"] instance=ExtResource("3_pwjdw")]
 position = Vector2(368, 199)
+trash_time = 1
 
 [node name="SpaceBackground4" type="Sprite2D" parent="."]
 z_index = -4

@@ -22,9 +22,9 @@ func _physics_process(_delta):
 	up_direction = gravity_direction
 	velocity -= (gravity_direction.normalized() * grav_strength)
 	move_and_slide()
-	
 
 func move_player(_delta):
+>>>>>>> development
 	# Handle movement with arrow keys or A/D keys
 	velocity.x = 0
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("move_left"):
