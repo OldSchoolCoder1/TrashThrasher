@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1sdyd703lsa"]
+[gd_scene load_steps=5 format=3 uid="uid://b1sdyd703lsa"]
 
 [ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
 [ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
 [ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="3_pwjdw"]
+[ext_resource type="Texture2D" uid="uid://cpxihichvmfvc" path="res://assets/background/Space_Background4.png" id="4_urcqb"]
 
 [node name="Level" type="Node2D"]
 
@@ -20,3 +21,9 @@ ignore_rotation = false
 
 [node name="FlyingSaucer" parent="." instance=ExtResource("3_pwjdw")]
 position = Vector2(368, 199)
+
+[node name="SpaceBackground4" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(1174, 1197)
+scale = Vector2(3.13426, 3.13426)
+texture = ExtResource("4_urcqb")
