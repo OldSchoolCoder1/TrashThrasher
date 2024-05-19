@@ -23,7 +23,6 @@ ignore_rotation = false
 
 [node name="FlyingSaucer" parent="." groups=["Saucers"] instance=ExtResource("3_pwjdw")]
 position = Vector2(368, 199)
-trash_time = 1
 
 [node name="SpaceBackground4" type="Sprite2D" parent="."]
 z_index = -4

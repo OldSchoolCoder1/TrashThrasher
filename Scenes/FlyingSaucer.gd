@@ -76,14 +76,7 @@ func update_animation():
 	else:
 		sprite.play("normal")
 
-# Collision handling function
-<<<<<<< Updated upstream
-func _on_FlyingSaucer_body_entered(body):
-	if body.name == "Projectile":
-		take_damage(10)
-=======
 func hit():
 	health -= 1
 	if health <= 0:
 		queue_free()
->>>>>>> Stashed changes
