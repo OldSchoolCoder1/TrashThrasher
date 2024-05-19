@@ -1,21 +1,21 @@
-extends Node2D
+extends Area2D
 
+var Trash = preload("res://Scenes/TrashObject.tscn")
 # Properties
 var health = 3
 var speed = 100
 var direction = Vector2()
-var sprite: Sprite2D
+@export var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
+@export var trash : PackedScene
+@export var trash_time := 1
+var timer = 0
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-<<<<<<< Updated upstream
-	sprite = get_node("Sprite2D")
-	collision_shape = get_node("CollisionShape2D")
-=======
+
 	add_to_group("Saucers")
 	collision_shape = self.get_node("CollisionShape2D")
->>>>>>> Stashed changes
 	randomize()
 	direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 
@@ -28,19 +28,18 @@ func _process(delta):
 		direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 	check_bounds()
 	update_animation()
+	timer += delta
+	if timer >= trash_time:
+		timer = 0
+		spawn_trash()
 
 # Function to spawn trash
 func spawn_trash():
-<<<<<<< Updated upstream
-	# var trash = Trash.instance()  # Replace 'Trash' with actual file
-#    trash.position = position
-#    get_parent().add_child(trash)
-=======
+
 	var new_trash = trash.instantiate()
 	new_trash.position = position
 	new_trash.add_to_group("Trash")
 	get_parent().add_child(new_trash)
->>>>>>> Stashed changes
 
  # Function to take damage func take_damage(amount):
 func take_damage(amount):
@@ -49,8 +48,6 @@ func take_damage(amount):
 		die()
 		play_sound()
 		update_animation()
-
-
 
 # Function to handle the saucer's destruction
 func die():
@@ -74,7 +71,6 @@ func check_bounds():
 
 # Update sprite animation based on the saucer's state
 func update_animation():
-
 	if health < 50:
 		sprite.play("damaged")
 	else:
@@ -83,7 +79,7 @@ func update_animation():
 # Collision handling function
 <<<<<<< Updated upstream
 func _on_FlyingSaucer_body_entered(body):
-	if body.is_in_group("enemies"):
+	if body.name == "Projectile":
 		take_damage(10)
 =======
 func hit():

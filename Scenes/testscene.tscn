@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6s46cuatdkw8"]
+
+[ext_resource type="Script" path="res://Scenes/Spawner.gd" id="2_dilfc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(0, 259)
+script = ExtResource("2_dilfc")
+
+[node name="ColorRect" type="ColorRect" parent="Spawner"]
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 29.0
+
+[node name="Timer" type="Timer" parent="Spawner"]
+process_mode = 1
+autostart = true

@@ -1,7 +1,21 @@
-[gd_scene format=3 uid="uid://cvnils4poyjsv"]
+[gd_scene load_steps=4 format=3 uid="uid://cvnils4poyjsv"]
 
-[node name="Area2D" type="Area2D"]
+[ext_resource type="Script" path="res://Projectile.gd" id="1_0mm07"]
+[ext_resource type="Texture2D" uid="uid://cwwk8m4yuek1u" path="res://Assets/player/laser-blast1.png" id="2_mq7ra"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yboyj"]
+size = Vector2(4.00001, 53.3191)
+
+[node name="Laser_blast" type="CharacterBody2D"]
+script = ExtResource("1_0mm07")
+
+[node name="Laser-blast1" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_mq7ra")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.97)
+rotation = -3.14159
+scale = Vector2(0.135624, -0.0545913)
+shape = SubResource("RectangleShape2D_yboyj")
