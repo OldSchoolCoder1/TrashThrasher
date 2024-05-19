@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://566th2q4vdh2"]
+
+[ext_resource type="Texture2D" uid="uid://cb7w6iy3a1iaj" path="res://assets/garbage/garbage-bag2.png" id="1_ny2gf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1shg"]
+size = Vector2(155, 160)
+
+[node name="GarbageBag2" type="RigidBody2D"]
+
+[node name="GarbageBag2" type="Sprite2D" parent="."]
+texture = ExtResource("1_ny2gf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -6)
+shape = SubResource("RectangleShape2D_r1shg")

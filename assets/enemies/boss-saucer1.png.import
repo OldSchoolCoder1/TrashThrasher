@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvvqdrevw0q3b"
-path="res://.godot/imported/crate1.png-5a1c868599492f99574fa2d5899daa47.ctex"
+uid="uid://bie7jjbah0l4d"
+path="res://.godot/imported/boss-saucer1.png-bcd883ca552640a9a66313207ecde92e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/garbage/crate1.png"
-dest_files=["res://.godot/imported/crate1.png-5a1c868599492f99574fa2d5899daa47.ctex"]
+source_file="res://assets/enemies/boss-saucer1.png"
+dest_files=["res://.godot/imported/boss-saucer1.png-bcd883ca552640a9a66313207ecde92e.ctex"]
 
 [params]
 

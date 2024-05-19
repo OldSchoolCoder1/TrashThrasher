@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kdva342omuy8"]
 
-[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://Assets/enemies/little-saucer1.png" id="1_a3d1g"]
+[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://assets/enemies/little-saucer1.png" id="1_a3d1g"]
 [ext_resource type="Script" path="res://Scenes/FlyingSaucer.gd" id="1_xdmlk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljrck"]
