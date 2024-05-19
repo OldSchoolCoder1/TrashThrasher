@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1sdyd703lsa"]
+
+[ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
+[ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
+[ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="3_pwjdw"]
+[ext_resource type="PackedScene" uid="uid://7deowc4ed8gj" path="res://Scenes/projectile.tscn" id="3_qch0j"]
+[ext_resource type="Texture2D" uid="uid://cpxihichvmfvc" path="res://Assets/background/Space_Background4.png" id="4_urcqb"]
+
+[node name="Level" type="Node2D" groups=["Saucers"]]
+
+[node name="WorldContainer" parent="." instance=ExtResource("1_850cu")]
+position = Vector2(392, 1157)
+
+[node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_y47ha")]
+position = Vector2(366, 457)
+wall_min_slide_angle = 3.14159
+proj_scene = ExtResource("3_qch0j")
+world = NodePath("../WorldContainer")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(16.38, -131.735)
+ignore_rotation = false
+
+[node name="FlyingSaucer" parent="." groups=["Saucers"] instance=ExtResource("3_pwjdw")]
+position = Vector2(368, 199)
+trash_time = 1
+
+[node name="SpaceBackground4" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(1174, 1197)
+scale = Vector2(3.13426, 3.13426)
+texture = ExtResource("4_urcqb")

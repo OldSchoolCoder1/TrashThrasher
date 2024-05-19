@@ -9,8 +9,21 @@ func _process(delta):
 	move_player(delta)
 	check_shoot()
 
+<<<<<<< Updated upstream
 func move_player(delta):
 	var direction = 0
+=======
+func _physics_process(_delta):
+	gravity_direction = (position - world.position).normalized()
+	up_direction = gravity_direction
+	velocity -= (gravity_direction.normalized() * grav_strength)
+	move_and_slide()
+	
+	
+	
+
+func move_player(_delta):
+>>>>>>> Stashed changes
 	# Handle movement with arrow keys or A/D keys
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("move_left"):
 		direction -= 1
