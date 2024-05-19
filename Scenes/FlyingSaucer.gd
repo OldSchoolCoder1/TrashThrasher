@@ -5,7 +5,7 @@ var Trash = preload("res://Scenes/TrashObject.tscn")
 var health = 100
 var speed = 100
 var direction = Vector2()
-var sprite: AnimatedSprite2D
+@export var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
 var trash = load("res://Scenes/TrashObject.tscn")
 @export var trash_time := 1
@@ -13,7 +13,6 @@ var timer = 0
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-	sprite = self.get_node("Sprite")
 	collision_shape = self.get_node("CollisionShape2D")
 
 	randomize()

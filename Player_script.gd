@@ -9,6 +9,8 @@ var projectile_scene = preload("res://Projectile.tscn")
 @export var world: Node2D
 var gravity_direction
 
+func _ready():
+	wall_min_slide_angle = 0
 	
 func _process(delta):
 	rotate(get_angle_to(world.global_position) - PI/2)
@@ -16,6 +18,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	gravity_direction = position - world.position
+	up_direction = world.position - position
 	velocity -= (gravity_direction * grav_strength)
 	move_and_slide()
 	
@@ -27,8 +30,8 @@ func move_player(delta):
 		velocity.x -= SPEED
 	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("move_right"):
 		velocity.x += SPEED
-	if Input.is_action_pressed("jump"):
-		velocity.y += jump
+	if Input.is_action_pressed("jump") and is_on_floor():
+		velocity.y = jump
 
 func check_shoot():
 	pass

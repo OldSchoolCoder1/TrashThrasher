@@ -1,9 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://kdva342omuy8"]
+[gd_scene load_steps=5 format=3 uid="uid://kdva342omuy8"]
+
+[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://Assets/enemies/little-saucer1.png" id="1_a3d1g"]
+[ext_resource type="Script" path="res://Scenes/FlyingSaucer.gd" id="1_xdmlk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljrck"]
-radius = 122.016
+radius = 41.4934
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2j4cv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a3d1g")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a3d1g")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="FlyingSaucer" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_xdmlk")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-207, -226)
+position = Vector2(0, -12.4)
 scale = Vector2(0.955, 0.425)
 shape = SubResource("CircleShape2D_ljrck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.342491, 0.355372)
+sprite_frames = SubResource("SpriteFrames_2j4cv")
+animation = &"normal"
