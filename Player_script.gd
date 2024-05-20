@@ -1,43 +1,39 @@
 extends CharacterBody2D
 
-@export var SPEED = 100
-const SHOOT_SPEED = 500
-var grav_strength = 75
-var jump = 700
+const SPEED = 300.0
+const JUMP_VELOCITY = -400
 var can_shoot = true
 @export var proj_scene : PackedScene
 @export var world: Node2D
-var gravity_direction
+var planet_normal : Vector2
+var local_velocity : Vector2
 
 func _ready():
 	wall_min_slide_angle = 0
 	
 func _process(delta):
-	rotate(get_angle_to(world.global_position) - PI/2)
 	check_shoot()
 	move_player(delta)
 
-func _physics_process(_delta):
-	gravity_direction = (position - world.position).normalized()
-	up_direction = gravity_direction
-	velocity -= (gravity_direction.normalized() * grav_strength)
+func _physics_process(delta):
+	planet_normal = (global_position - world.global_position)
+	
+	if not is_on_floor():
+		local_velocity -= Vector2.UP * 1000.0 * delta
+	rotation = planet_normal.angle() + PI/2.0
+	up_direction = planet_normal
 	move_and_slide()
 
 func move_player(_delta):
-	# Handle movement with arrow keys or A/D keys
-	velocity.x = 0
-	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("move_left"):
-		if rotation >= (-PI / 2) and rotation <= (PI / 2):
-			velocity.x = -SPEED
-		else:
-			velocity.x = SPEED
-	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("move_right"):
-		if rotation >= (-PI / 2) and rotation <= (PI / 2):
-			velocity.x = SPEED
-		else:
-			velocity.x = -SPEED
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		local_velocity.x = direction * SPEED
+	else:
+		local_velocity.x = move_toward (local_velocity.x, 0, SPEED)
+	
+	velocity = local_velocity.rotated(rotation)
 	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity += gravity_direction * jump
+		local_velocity.y = JUMP_VELOCITY
 
 func check_shoot():
 	if Input.is_action_just_pressed("shoot"): # and can_shoot:
