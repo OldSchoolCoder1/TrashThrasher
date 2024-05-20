@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var speed := 10
+var speed := 800
 var world
 
 # Called when the node enters the scene tree for the first time.

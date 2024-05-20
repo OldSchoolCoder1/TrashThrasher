@@ -10,10 +10,12 @@ var collision_shape: CollisionShape2D
 @export var trash : PackedScene
 @export var trash_time := 1
 var timer = 0
+var world : Node2D
+var planet_normal : Vector2
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-
+	world = $"..//WorldContainer"
 	add_to_group("Saucers")
 	collision_shape = self.get_node("CollisionShape2D")
 	randomize()
@@ -23,7 +25,9 @@ func _ready():
 #     connect("body_entered", self, "_on_FlyingSaucer_body_entered")
 
 func _process(delta):
+	planet_normal = (global_position - world.global_position)
 	position += direction * speed * delta
+	rotation = planet_normal.angle() + PI/2
 	if randf() * 100 > 98:
 		direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 	check_bounds()
@@ -63,11 +67,14 @@ func play_sound():
 
 # Check if the saucer is within screen bounds
 func check_bounds():
-	var screen_size = get_viewport_rect().size
-	if position.x < 0 or position.x > screen_size.x:
-		direction.x *= -1
-	if position.y < 0 or position.y > screen_size.y:
-		direction.y *= -1
+	#var screen_size = get_viewport_rect().size
+	#if position.x < 0 or position.x > screen_size.x:
+		#direction.x *= -1
+	if global_position.distance_to(world.global_position) > 1050:
+		direction.y = abs(direction.y)
+	if global_position.distance_to(world.global_position) < 800:
+		direction.y = abs(direction.y) * -1
+		
 
 # Update sprite animation based on the saucer's state
 func update_animation():
