@@ -1,31 +1,47 @@
 extends CharacterBody2D
 
-const SPEED = 300
-const SHOOT_SPEED = 500
+const SPEED = 300.0
+const JUMP_VELOCITY = -400
 var can_shoot = true
-var projectile_scene = preload("res://Projectile.tscn")
+@export var proj_scene : PackedScene
+@export var world: Node2D
+var planet_normal : Vector2
+var local_velocity : Vector2
 
+func _ready():
+	wall_min_slide_angle = 0
+	
 func _process(delta):
-	move_player(delta)
 	check_shoot()
+	move_player(delta)
 
-func move_player(delta):
-	var direction = 0
-	# Handle movement with arrow keys or A/D keys
-	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("move_left"):
-		direction -= 1
-	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("move_right"):
-		direction += 1
-	move_and_slide(Vector2(direction * SPEED * delta, 0))
+func _physics_process(delta):
+	planet_normal = (global_position - world.global_position)
+	
+	if not is_on_floor():
+		local_velocity -= Vector2.UP * 1000.0 * delta
+	rotation = planet_normal.angle() + PI/2.0
+	up_direction = planet_normal
+	move_and_slide()
+
+func move_player(_delta):
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		local_velocity.x = direction * SPEED
+	else:
+		local_velocity.x = move_toward (local_velocity.x, 0, SPEED)
+	
+	velocity = local_velocity.rotated(rotation)
+	if Input.is_action_pressed("jump") and is_on_floor():
+		local_velocity.y = JUMP_VELOCITY
 
 func check_shoot():
-	if Input.is_action_just_pressed("shoot") and can_shoot:
-		var projectile = projectile_scene.instance()
-		get_parent().add_child(projectile)
+	if Input.is_action_just_pressed("shoot"): # and can_shoot:
+		var projectile = proj_scene.instantiate()
 		projectile.position = position
-		projectile.velocity = Vector2(0, -SHOOT_SPEED)
-		can_shoot = false
-		$Timer.start()  # Start cooldown timer for shooting
-
-func _on_Timer_timeout():
-	can_shoot = true
+		add_sibling(projectile)
+		#can_shoot = false
+		#$Timer.start()  # Start cooldown timer for shooting
+#
+#func _on_Timer_timeout():
+	#can_shoot = true
