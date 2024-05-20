@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://lebb21fyy850"]
+[gd_scene load_steps=5 format=3 uid="uid://bqlb1otutx7lx"]
 
 [ext_resource type="Script" path="res://Scenes/WorldContainer.gd" id="1_80xnk"]
 [ext_resource type="Texture2D" uid="uid://cstauxyvpvfwc" path="res://Assets/terra.png" id="1_ng6nw"]

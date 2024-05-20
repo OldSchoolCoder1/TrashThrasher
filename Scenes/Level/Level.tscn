@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1sdyd703lsa"]
 
-[ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
+[ext_resource type="PackedScene" uid="uid://bqlb1otutx7lx" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
 [ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
 [ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="3_pwjdw"]
 [ext_resource type="PackedScene" uid="uid://7deowc4ed8gj" path="res://Scenes/projectile.tscn" id="3_qch0j"]
@@ -14,6 +14,8 @@ position = Vector2(392, 1157)
 [node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_y47ha")]
 position = Vector2(366, 457)
 wall_min_slide_angle = 3.14159
+grav_strength = 30
+jump = 800
 proj_scene = ExtResource("3_qch0j")
 world = NodePath("../WorldContainer")
 
