@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlnfrqymo3ht5"]
 
-[ext_resource type="Texture2D" uid="uid://ca0m4ttk4qeg2" path="res://Assets/planets/moon1.png" id="1_56hde"]
+[ext_resource type="Texture2D" uid="uid://ca0m4ttk4qeg2" path="res://assets/planets/moon1.png" id="1_56hde"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vike"]
 radius = 208.483
@@ -8,6 +8,7 @@ radius = 208.483
 [node name="Planet" type="StaticBody2D"]
 
 [node name="Moon" type="Sprite2D" parent="."]
+scale = Vector2(3.4, 3.4)
 texture = ExtResource("1_56hde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://kdva342omuy8"]
 
-[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://Assets/enemies/little-saucer1.png" id="1_a3d1g"]
+[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://assets/enemies/little-saucer1.png" id="1_a3d1g"]
 [ext_resource type="Script" path="res://Scenes/FlyingSaucer.gd" id="1_xdmlk"]
 [ext_resource type="PackedScene" uid="uid://566th2q4vdh2" path="res://Scenes/objects/GarbageBag2.tscn" id="2_txrvv"]
 

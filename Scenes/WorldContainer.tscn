@@ -36,5 +36,7 @@ scale = Vector2(0.995, 0.995)
 shape = SubResource("CircleShape2D_swx7r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Planet"]
+position = Vector2(0.436661, 0.206943)
+scale = Vector2(1.00207, 1.00273)
 texture = ExtResource("1_ng6nw")
 offset = Vector2(-2.305, 0)

@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1sdyd703lsa"]
+[gd_scene load_steps=12 format=3 uid="uid://b1sdyd703lsa"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6w7ld"]
 [ext_resource type="PackedScene" uid="uid://bqlb1otutx7lx" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
 [ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
 [ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="3_pwjdw"]
 [ext_resource type="PackedScene" uid="uid://7deowc4ed8gj" path="res://Scenes/projectile.tscn" id="3_qch0j"]
-[ext_resource type="Texture2D" uid="uid://cpxihichvmfvc" path="res://Assets/background/Space_Background4.png" id="4_urcqb"]
+[ext_resource type="Texture2D" uid="uid://cpxihichvmfvc" path="res://assets/background/Space_Background4.png" id="4_urcqb"]
 [ext_resource type="PackedScene" uid="uid://qt7nljae7vmd" path="res://Scenes/enemies/Boss.tscn" id="6_4qepo"]
 [ext_resource type="PackedScene" uid="uid://cxxuapahjsacm" path="res://Scenes/transition_screen.tscn" id="8_adsmj"]
+[ext_resource type="Texture2D" uid="uid://bkl5fnb354esr" path="res://Assets/terra-polluted.png" id="9_8ppdb"]
 
 [sub_resource type="Animation" id="Animation_y600j"]
 resource_name = "dramatic_boss_entrance"
@@ -65,5 +66,10 @@ scale = Vector2(3.13426, 3.13426)
 texture = ExtResource("4_urcqb")
 
 [node name="TransitionScreen" parent="." instance=ExtResource("8_adsmj")]
+
+[node name="PollutionMask" type="Sprite2D" parent="."]
+position = Vector2(383.5, 1158.5)
+scale = Vector2(2.7793, 2.78711)
+texture = ExtResource("9_8ppdb")
 
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_transition_screen_transitioned"]

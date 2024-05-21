@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qt7nljae7vmd"]
 
-[ext_resource type="Texture2D" uid="uid://bie7jjbah0l4d" path="res://Assets/enemies/boss-saucer1.png" id="1_sgvpa"]
+[ext_resource type="Texture2D" uid="uid://bie7jjbah0l4d" path="res://assets/enemies/boss-saucer1.png" id="1_sgvpa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_csyk5"]
 radius = 209.038

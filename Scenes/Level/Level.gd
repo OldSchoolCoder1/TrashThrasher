@@ -21,13 +21,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	apply_pollution()
 	if saucer_count < max_saucers:
 		spawn_saucer()
 	if kills >= enemies_to_win:
 		win()
 	if trash_count >= max_trash:
 		lose()
-	apply_pollution()
+	
 
 func spawn_saucer():
 	var new_saucer = saucer_scene.instantiate()
@@ -54,8 +55,8 @@ func lose():
 	get_tree().change_scene_to_file("res://Scenes/Level/LossScene.tscn")
 	
 func apply_pollution():
-	#$PollutionMask.self_modulate.a = (trash_count / max_trash) * #percentage decimal here, delete pass line
-	pass
+	$PollutionMask.self_modulate.a = (trash_count / max_trash) * 100 #percentage decimal here, delete pass line
+	
 	
 func apply_saucer_death():
 	saucer_count -= 1;
