@@ -44,6 +44,7 @@ func spawn_trash():
 	new_trash.position = position
 	new_trash.add_to_group("Trash")
 	get_parent().add_child(new_trash)
+	get_parent().trash_count += 1
 
  # Function to take damage func take_damage(amount):
 func take_damage(amount):
@@ -84,4 +85,5 @@ func update_animation():
 func hit():
 	health -= 1
 	if health <= 0:
+		get_parent().kills += 1
 		queue_free()
