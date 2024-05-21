@@ -7,7 +7,8 @@ const SHOOT_SPEED = 500
 var can_shoot = true
 @export var proj_scene : PackedScene
 @export var world: Node2D
-var gravity_direction
+var planet_normal : Vector2
+var local_velocity : Vector2
 
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -16,15 +17,16 @@ func _ready():
 	wall_min_slide_angle = 0
 	
 func _process(delta):
-	rotate(get_angle_to(world.global_position) - PI/2)
 	check_shoot()
 	move_player(delta)
+
 
 func _physics_process(_delta):
 				
 	gravity_direction = (position - world.position).normalized()
 	up_direction = gravity_direction
 	velocity -= (gravity_direction.normalized() * grav_strength)
+
 	move_and_slide()
 	
 
@@ -63,12 +65,12 @@ func update_animations(horizontal_direction):
 		
 
 func check_shoot():
-	if Input.is_action_just_pressed("shoot"): # and can_shoot:
+	if Input.is_action_just_pressed("shoot") and can_shoot:
 		var projectile = proj_scene.instantiate()
 		projectile.position = position
 		add_sibling(projectile)
-		#can_shoot = false
-		#$Timer.start()  # Start cooldown timer for shooting
-#
-#func _on_Timer_timeout():
-	#can_shoot = true
+		can_shoot = false
+		$Timer.start()  # Start cooldown timer for shooting
+
+func _on_timer_timeout():
+	can_shoot = true
