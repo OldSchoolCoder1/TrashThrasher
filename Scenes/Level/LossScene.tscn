@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://di7r740dyojk6"]
+[gd_scene load_steps=3 format=3 uid="uid://di7r740dyojk6"]
 
 [ext_resource type="Script" path="res://Scenes/Level/LossScene.gd" id="1_0hi54"]
+[ext_resource type="PackedScene" uid="uid://cxxuapahjsacm" path="res://Scenes/transition_screen.tscn" id="2_uvjwu"]
 
 [node name="LossScene" type="Node2D"]
 script = ExtResource("1_0hi54")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Label" type="Label" parent="."]
+offset_right = 795.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 50
+text = "Planet Dead!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransitionScreen" parent="." instance=ExtResource("2_uvjwu")]

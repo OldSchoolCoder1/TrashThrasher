@@ -19,12 +19,14 @@ func _process(delta):
 	move_player(delta)
 
 
-func _physics_process(_delta):
-				
-	gravity_direction = (position - world.position).normalized()
-	up_direction = gravity_direction
-	velocity -= (gravity_direction.normalized() * grav_strength)
-
+func _physics_process(delta):
+	planet_normal = (global_position - world.global_position).normalized()
+	
+	rotation = planet_normal.angle() + PI/2.0
+	up_direction = planet_normal
+	
+	if not is_on_floor():
+		local_velocity -= Vector2.UP * 1000.0 * delta
 	move_and_slide()
 	
 
