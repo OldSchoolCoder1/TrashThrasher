@@ -18,14 +18,15 @@ func _process(delta):
 	check_shoot()
 	move_player(delta)
 
-func _physics_process(delta):
-	planet_normal = (global_position - world.global_position)
-	
-	if not is_on_floor():
-		local_velocity -= Vector2.UP * 1000.0 * delta
-	rotation = planet_normal.angle() + PI/2.0
-	up_direction = planet_normal
+
+func _physics_process(_delta):
+				
+	gravity_direction = (position - world.position).normalized()
+	up_direction = gravity_direction
+	velocity -= (gravity_direction.normalized() * grav_strength)
+
 	move_and_slide()
+	
 
 func move_player(_delta):
 	var horizontal_direction = Input.get_axis("ui_left", "ui_right")
