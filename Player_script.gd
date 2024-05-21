@@ -27,41 +27,39 @@ func _physics_process(_delta):
 	velocity -= (gravity_direction.normalized() * grav_strength)
 	move_and_slide()
 	
-	
 
 func move_player(_delta):
-	# Handle movement with arrow keys or A/D keys
-	velocity.x = 0
-	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("move_left"):
-		if rotation >= (-PI / 2) and rotation <= (PI / 2):
-			velocity.x = -SPEED
-		else:
-			velocity.x = SPEED
-	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("move_right"):
-		if rotation >= (-PI / 2) and rotation <= (PI / 2):
-			velocity.x = SPEED
-		else:
-			velocity.x = -SPEED
-	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity += gravity_direction * jump
-		
-	var horizontal_direction = Input.get_axis("ui_left", "ui_right")
-	velocity.x = SPEED*horizontal_direction
+	var horizontal_direction = Input.get_axis("move_left", "move_right")
+	velocity.x = SPEED * horizontal_direction
 	
 	if horizontal_direction !=0:
 		sprite.flip_h = (horizontal_direction == -1)
 	
 	update_animations(horizontal_direction)	
-	
+
+	# Handle movement with arrow keys or A/D keys
+	if Input.is_action_pressed("move_left"):
+		if rotation >= (-PI / 2) and rotation <= (PI / 2):
+			velocity.x = SPEED * horizontal_direction
+ 
+	if Input.is_action_pressed("move_right"):
+		if rotation >= (-PI / 2) and rotation <= (PI / 2):
+			velocity.x = SPEED * horizontal_direction
+
+	if Input.is_action_pressed("jump") and is_on_floor():
+		velocity += gravity_direction * jump
+		
+
 func update_animations(horizontal_direction):
 	if is_on_floor():
 		if horizontal_direction == 0:
 			ap.play("Idle")
 		else:
-			ap.play("Running")
+			if horizontal_direction != 0:
+				ap.play("Run")
 	else:
 		if velocity.y < 0:
-			ap.play("jump")
+			ap.play("Jump")
 		
 
 func check_shoot():
