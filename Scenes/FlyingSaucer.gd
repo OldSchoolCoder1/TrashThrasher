@@ -25,12 +25,12 @@ func _ready():
 #     connect("body_entered", self, "_on_FlyingSaucer_body_entered")
 
 func _process(delta):
-	planet_normal = (global_position - world.global_position)
+	planet_normal = (global_position - world.global_position).normalized()
+	check_bounds()
 	position += direction * speed * delta
 	rotation = planet_normal.angle() + PI/2
-	if randf() * 100 > 98:
+	if randf() * 100 > 99:
 		direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
-	check_bounds()
 	update_animation()
 	timer += delta
 	if timer >= trash_time:
@@ -67,13 +67,11 @@ func play_sound():
 
 # Check if the saucer is within screen bounds
 func check_bounds():
-	#var screen_size = get_viewport_rect().size
-	#if position.x < 0 or position.x > screen_size.x:
-		#direction.x *= -1
-	if global_position.distance_to(world.global_position) > 1050:
-		direction.y = abs(direction.y)
-	if global_position.distance_to(world.global_position) < 800:
-		direction.y = abs(direction.y) * -1
+	print(position.distance_to(world.position))
+	if position.distance_to(world.position) > 1050:
+		direction = -planet_normal
+	if position.distance_to(world.position) < 800:
+		direction = planet_normal
 		
 
 # Update sprite animation based on the saucer's state
