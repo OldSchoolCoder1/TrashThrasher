@@ -56,6 +56,7 @@ func update_animations(horizontal_direction):
 
 func check_shoot():
 	if Input.is_action_just_pressed("shoot") and can_shoot:
+		$AudioStreamPlayer.play()
 		var projectile = proj_scene.instantiate()
 		projectile.position = position
 		add_sibling(projectile)

@@ -5,6 +5,7 @@ var Trash = preload("res://Scenes/TrashObject.tscn")
 var health = 3
 var speed = 100
 var direction = Vector2()
+@export var explosion: PackedScene
 @export var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
 @export var trash : PackedScene
@@ -47,15 +48,18 @@ func spawn_trash():
 	get_parent().trash_count += 1
 
  # Function to take damage func take_damage(amount):
-func take_damage(amount):
-	health -= amount
-	if health <= 0:
-		die()
-		play_sound()
-		update_animation()
+
 
 # Function to handle the saucer's destruction
 func die():
+	var boom = explosion.instantiate()
+	boom.global_position = global_position
+	boom.rotation = rotation
+	boom.z_index = 10
+	get_parent().add_child(boom)
+	get_tree().create_timer(1).timeout
+	$saucer.queue_free()
+	get_tree().create_timer(1).timeout
 	queue_free()  # Removes the node from the scene
 
 # Play sound effects
@@ -68,7 +72,6 @@ func play_sound():
 
 # Check if the saucer is within screen bounds
 func check_bounds():
-	print(position.distance_to(world.position))
 	if position.distance_to(world.position) > 1050:
 		direction = -planet_normal
 	if position.distance_to(world.position) < 800:
@@ -87,4 +90,4 @@ func hit():
 	if health <= 0:
 		get_parent().kills += 1
 		get_parent().saucer_count -= 1
-		queue_free()
+		die()

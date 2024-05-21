@@ -5,7 +5,7 @@ var max_trash : int
 var saucer_count : int
 var max_saucers : int
 var saucer_spawn_distance = 800
-var enemies_to_win = 4
+var enemies_to_win = 6
 var kills = 0
 @export var saucer_scene : PackedScene
 signal lost
@@ -13,7 +13,7 @@ signal lost
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$TransitionScreen/ColorRect.color = Color(0, 0, 0, 0)
-	max_trash = 100
+	max_trash = 500
 	max_saucers = 8
 	trash_count = 0
 	saucer_count = 0
@@ -55,7 +55,9 @@ func lose():
 	get_tree().change_scene_to_file("res://Scenes/Level/LossScene.tscn")
 	
 func apply_pollution():
-	$PollutionMask.self_modulate.a = (trash_count / max_trash) * 100 #percentage decimal here, delete pass line
+	
+	$PollutionMask.self_modulate.a = float(trash_count) / float(max_trash) #percentage decimal here, delete pass line
+	print($PollutionMask.self_modulate.a)
 	
 	
 func apply_saucer_death():

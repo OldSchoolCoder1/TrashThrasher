@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://kdva342omuy8"]
+[gd_scene load_steps=7 format=3 uid="uid://kdva342omuy8"]
 
-[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://assets/enemies/little-saucer1.png" id="1_a3d1g"]
+[ext_resource type="Texture2D" uid="uid://cjx52w4fkbj83" path="res://Assets/enemies/little-saucer1.png" id="1_a3d1g"]
 [ext_resource type="Script" path="res://Scenes/FlyingSaucer.gd" id="1_xdmlk"]
+[ext_resource type="PackedScene" uid="uid://8lkdmkdggeco" path="res://Scenes/objects/Explosion.tscn" id="2_2orue"]
 [ext_resource type="PackedScene" uid="uid://566th2q4vdh2" path="res://Scenes/objects/GarbageBag2.tscn" id="2_txrvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljrck"]
@@ -28,7 +29,8 @@ animations = [{
 
 [node name="FlyingSaucer" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_xdmlk")
-sprite = NodePath("AnimatedSprite2D")
+explosion = ExtResource("2_2orue")
+sprite = NodePath("saucer")
 trash = ExtResource("2_txrvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,7 +38,7 @@ position = Vector2(0, -12.4)
 scale = Vector2(0.955, 0.425)
 shape = SubResource("CircleShape2D_ljrck")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="saucer" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.342491, 0.355372)
 sprite_frames = SubResource("SpriteFrames_2j4cv")
 animation = &"normal"
