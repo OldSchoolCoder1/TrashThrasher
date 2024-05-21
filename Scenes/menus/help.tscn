@@ -30,8 +30,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "This is where I would put my help text...
-If I had any!"
+text = "Your planet is being used as an alien trash dump. You must stop them!
+Move left and right using A and D or Arrow keys
+Jump with Spacebar
+Aim and fire with the mouse
+Your goal is to shoot down all the aliens before your planet is
+overwhelmed with garbage."
 horizontal_alignment = 1
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
