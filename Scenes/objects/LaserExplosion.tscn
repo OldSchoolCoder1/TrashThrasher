@@ -1,47 +1,47 @@
-[gd_scene load_steps=15 format=3 uid="uid://8lkdmkdggeco"]
+[gd_scene load_steps=15 format=3 uid="uid://bcy12o4hc4fb0"]
 
-[ext_resource type="Texture2D" uid="uid://dyr74nhxae2t5" path="res://Assets/enemies/explosion1.png" id="1_b8wcf"]
-[ext_resource type="Script" path="res://Scenes/objects/Explosion.gd" id="1_bikow"]
-[ext_resource type="AudioStream" uid="uid://c064y4nnwsthd" path="res://Assets/Sound/500795__bratish__big-explosion.wav" id="3_ypwox"]
+[ext_resource type="Script" path="res://Scenes/objects/Explosion.gd" id="1_jb3en"]
+[ext_resource type="Texture2D" uid="uid://dyr74nhxae2t5" path="res://Assets/enemies/explosion1.png" id="2_0barv"]
+[ext_resource type="AudioStream" uid="uid://cpqn7aiqvli5x" path="res://Assets/Sound/laserhit.wav" id="3_oo6kj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q51bi"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(0, 0, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0bj7b"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(91, 0, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rj7ki"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(182, 0, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crnwj"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(273, 0, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iikws"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(364, 0, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgrn8"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(0, 91, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ntx7"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(91, 91, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ylj5"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(182, 91, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkupu"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(273, 91, 91, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfuvb"]
-atlas = ExtResource("1_b8wcf")
+atlas = ExtResource("2_0barv")
 region = Rect2(364, 91, 91, 91)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e25ee"]
@@ -79,20 +79,20 @@ animations = [{
 }],
 "loop": false,
 "name": &"explosion",
-"speed": 3.0
+"speed": 20.0
 }]
 
 [node name="Explosion" type="Node2D"]
-script = ExtResource("1_bikow")
+script = ExtResource("1_jb3en")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_e25ee")
 animation = &"explosion"
 frame = 9
 frame_progress = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ypwox")
+stream = ExtResource("3_oo6kj")
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

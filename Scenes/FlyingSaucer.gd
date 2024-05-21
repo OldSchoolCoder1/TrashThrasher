@@ -5,15 +5,18 @@ var Trash = preload("res://Scenes/TrashObject.tscn")
 var health = 3
 var speed = 100
 var direction = Vector2()
+@export var explosion: PackedScene
 @export var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
 @export var trash : PackedScene
-@export var trash_time := 1
+@export var trash_time := .8
 var timer = 0
+var world : Node2D
+var planet_normal : Vector2
 # var damage_sound = preload("res://sounds/damage.wav")  # ADd sound if wanted
 
 func _ready():
-
+	world = $"..//WorldContainer"
 	add_to_group("Saucers")
 	collision_shape = self.get_node("CollisionShape2D")
 	randomize()
@@ -23,10 +26,12 @@ func _ready():
 #     connect("body_entered", self, "_on_FlyingSaucer_body_entered")
 
 func _process(delta):
-	position += direction * speed * delta
-	if randf() * 100 > 98:
-		direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
+	planet_normal = (global_position - world.global_position).normalized()
 	check_bounds()
+	position += direction * speed * delta
+	rotation = planet_normal.angle() + PI/2
+	if randf() * 100 > 99:
+		direction = Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0).normalized()
 	update_animation()
 	timer += delta
 	if timer >= trash_time:
@@ -40,17 +45,21 @@ func spawn_trash():
 	new_trash.position = position
 	new_trash.add_to_group("Trash")
 	get_parent().add_child(new_trash)
+	get_parent().trash_count += 1
 
  # Function to take damage func take_damage(amount):
-func take_damage(amount):
-	health -= amount
-	if health <= 0:
-		die()
-		play_sound()
-		update_animation()
+
 
 # Function to handle the saucer's destruction
 func die():
+	var boom = explosion.instantiate()
+	boom.global_position = global_position
+	boom.rotation = rotation
+	boom.z_index = 10
+	get_parent().add_child(boom)
+	get_tree().create_timer(1).timeout
+	$saucer.queue_free()
+	get_tree().create_timer(1).timeout
 	queue_free()  # Removes the node from the scene
 
 # Play sound effects
@@ -63,11 +72,11 @@ func play_sound():
 
 # Check if the saucer is within screen bounds
 func check_bounds():
-	var screen_size = get_viewport_rect().size
-	if position.x < 0 or position.x > screen_size.x:
-		direction.x *= -1
-	if position.y < 0 or position.y > screen_size.y:
-		direction.y *= -1
+	if position.distance_to(world.position) > 1050:
+		direction = -planet_normal
+	if position.distance_to(world.position) < 800:
+		direction = planet_normal
+		
 
 # Update sprite animation based on the saucer's state
 func update_animation():
@@ -79,4 +88,6 @@ func update_animation():
 func hit():
 	health -= 1
 	if health <= 0:
-		queue_free()
+		get_parent().kills += 1
+		get_parent().saucer_count -= 1
+		die()
