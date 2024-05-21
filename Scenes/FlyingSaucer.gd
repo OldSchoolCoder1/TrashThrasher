@@ -8,7 +8,7 @@ var direction = Vector2()
 @export var sprite: AnimatedSprite2D
 var collision_shape: CollisionShape2D
 @export var trash : PackedScene
-@export var trash_time := 1
+@export var trash_time := .8
 var timer = 0
 var world : Node2D
 var planet_normal : Vector2
@@ -86,4 +86,5 @@ func hit():
 	health -= 1
 	if health <= 0:
 		get_parent().kills += 1
+		get_parent().saucer_count -= 1
 		queue_free()

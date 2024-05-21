@@ -397,5 +397,6 @@ sprite_frames = SubResource("SpriteFrames_ocymk")
 animation = &"death"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

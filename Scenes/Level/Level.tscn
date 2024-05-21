@@ -10,7 +10,7 @@
 
 [sub_resource type="Animation" id="Animation_y600j"]
 resource_name = "dramatic_boss_entrance"
-length = 8.0
+length = 11.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,7 +19,7 @@ tracks/0/path = NodePath("Player/Boss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 8),
+"times": PackedFloat32Array(3.1, 5.1, 10.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(713, -513), Vector2(470, -220), Vector2(-9, -190)]
@@ -50,13 +50,14 @@ proj_scene = ExtResource("3_qch0j")
 world = NodePath("../WorldContainer")
 
 [node name="Boss" parent="Player" instance=ExtResource("6_4qepo")]
-position = Vector2(713, -513)
+position = Vector2(752, -585)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(16.38, -131.735)
 ignore_rotation = false
 
 [node name="SpaceBackground4" type="Sprite2D" parent="."]
+visible = false
 z_index = -4
 position = Vector2(1174, 1197)
 scale = Vector2(3.13426, 3.13426)

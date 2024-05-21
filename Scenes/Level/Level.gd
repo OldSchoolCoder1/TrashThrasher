@@ -5,14 +5,14 @@ var max_trash : int
 var saucer_count : int
 var max_saucers : int
 var saucer_spawn_distance = 800
-var enemies_to_win = 5
+var enemies_to_win = 4
 var kills = 0
 @export var saucer_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	max_trash = 600
-	max_saucers = 3
+	max_trash = 500
+	max_saucers = 8
 	trash_count = 0
 	saucer_count = 0
 

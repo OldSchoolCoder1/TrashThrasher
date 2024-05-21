@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://di7r740dyojk6"]
+
+[ext_resource type="Script" path="res://Scenes/Level/LossScene.gd" id="1_0hi54"]
+
+[node name="LossScene" type="Node2D"]
+script = ExtResource("1_0hi54")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
