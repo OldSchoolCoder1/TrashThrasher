@@ -1,12 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1sdyd703lsa"]
+[gd_scene load_steps=10 format=3 uid="uid://b1sdyd703lsa"]
 
+[ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6w7ld"]
 [ext_resource type="PackedScene" uid="uid://lebb21fyy850" path="res://Scenes/WorldContainer.tscn" id="1_850cu"]
 [ext_resource type="PackedScene" uid="uid://x1rf8n2n0cvg" path="res://Player.tscn" id="2_y47ha"]
 [ext_resource type="PackedScene" uid="uid://kdva342omuy8" path="res://Scenes/FlyingSaucer.tscn" id="3_pwjdw"]
 [ext_resource type="PackedScene" uid="uid://7deowc4ed8gj" path="res://Scenes/projectile.tscn" id="3_qch0j"]
 [ext_resource type="Texture2D" uid="uid://cpxihichvmfvc" path="res://Assets/background/Space_Background4.png" id="4_urcqb"]
+[ext_resource type="PackedScene" uid="uid://qt7nljae7vmd" path="res://Scenes/enemies/Boss.tscn" id="6_4qepo"]
 
-[node name="Level" type="Node2D" groups=["Saucers"]]
+[sub_resource type="Animation" id="Animation_y600j"]
+resource_name = "dramatic_boss_entrance"
+length = 8.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(713, -513), Vector2(470, -220), Vector2(-9, -190)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqp7q"]
+_data = {
+"dramatic_boss_entrance": SubResource("Animation_y600j")
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_6w7ld")
+saucer_scene = ExtResource("3_pwjdw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_oqp7q")
+}
 
 [node name="WorldContainer" parent="." instance=ExtResource("1_850cu")]
 position = Vector2(392, 1157)
@@ -17,12 +49,12 @@ wall_min_slide_angle = 3.14159
 proj_scene = ExtResource("3_qch0j")
 world = NodePath("../WorldContainer")
 
+[node name="Boss" parent="Player" instance=ExtResource("6_4qepo")]
+position = Vector2(713, -513)
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(16.38, -131.735)
 ignore_rotation = false
-
-[node name="FlyingSaucer" parent="." groups=["Saucers"] instance=ExtResource("3_pwjdw")]
-position = Vector2(368, 199)
 
 [node name="SpaceBackground4" type="Sprite2D" parent="."]
 z_index = -4
